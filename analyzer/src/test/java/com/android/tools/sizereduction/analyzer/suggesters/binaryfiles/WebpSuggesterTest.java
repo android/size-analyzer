@@ -16,6 +16,13 @@
 
 package com.android.tools.sizereduction.analyzer.suggesters.binaryfiles;
 
+import static com.android.tools.sizereduction.analyzer.suggesters.binaryfiles.WebpSuggester.MIN_SDK_VERSION_SUPPORTING_LOSSLESS_WEBP;	
+import static com.android.tools.sizereduction.analyzer.utils.TestUtils.getTestDataFile;	
+import static com.google.common.truth.Truth.assertThat;	
+
+import com.android.tools.sizereduction.analyzer.SuggestionPayload.FileEntryData;	
+import com.android.tools.sizereduction.analyzer.SuggestionPayload.Payload;	
+import com.android.tools.sizereduction.analyzer.SuggestionPayload.Payload.WebpData;
 import com.android.tools.sizereduction.analyzer.model.BundleContext;
 import com.android.tools.sizereduction.analyzer.model.FileData;
 import com.android.tools.sizereduction.analyzer.model.SystemFileData;
