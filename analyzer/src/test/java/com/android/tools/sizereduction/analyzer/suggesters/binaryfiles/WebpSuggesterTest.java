@@ -16,28 +16,26 @@
 
 package com.android.tools.sizereduction.analyzer.suggesters.binaryfiles;
 
-import static com.android.tools.sizereduction.analyzer.suggesters.binaryfiles.WebpSuggester.MIN_SDK_VERSION_SUPPORTING_LOSSLESS_WEBP;
-import static com.android.tools.sizereduction.analyzer.utils.TestUtils.getTestDataFile;
-import static com.google.common.truth.Truth.assertThat;
-
-import com.android.tools.sizereduction.analyzer.SuggestionPayload.FileEntryData;
-import com.android.tools.sizereduction.analyzer.SuggestionPayload.Payload;
-import com.android.tools.sizereduction.analyzer.SuggestionPayload.Payload.WebpData;
 import com.android.tools.sizereduction.analyzer.model.BundleContext;
 import com.android.tools.sizereduction.analyzer.model.FileData;
-import com.android.tools.sizereduction.analyzer.model.GradleContext;
 import com.android.tools.sizereduction.analyzer.model.SystemFileData;
 import com.android.tools.sizereduction.analyzer.model.testing.FakeFileData;
 import com.android.tools.sizereduction.analyzer.suggesters.Suggestion;
 import com.android.tools.sizereduction.analyzer.suggesters.binaryfiles.testing.FakeWebpConverter;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Paths;
-import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import org.junit.Assume;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.List;
+
+import static com.android.tools.sizereduction.analyzer.suggesters.binaryfiles.WebpSuggester.MIN_SDK_VERSION_SUPPORTING_LOSSLESS_WEBP;
+import static com.android.tools.sizereduction.analyzer.utils.TestUtils.getTestDataFile;
+import static com.google.common.truth.Truth.assertThat;
 
 @RunWith(JUnit4.class)
 public class WebpSuggesterTest {
@@ -47,8 +45,9 @@ public class WebpSuggesterTest {
 
   @Before
   public void setUp() {
-    WebpNativeLibLoader.setDiskLocation(
-        new File(Paths.get("").toFile().getAbsolutePath() + "/libs/libwebp"));
+    File f = new File(Paths.get("").toFile().getAbsolutePath() + "/libs/libwebp");
+    Assume.assumeTrue(f.exists());
+    WebpNativeLibLoader.setDiskLocation(f);
   }
 
   @Test
