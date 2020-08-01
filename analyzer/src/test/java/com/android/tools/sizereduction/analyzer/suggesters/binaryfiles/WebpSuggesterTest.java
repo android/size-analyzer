@@ -28,6 +28,7 @@ import com.android.tools.sizereduction.analyzer.model.FileData;
 import com.android.tools.sizereduction.analyzer.model.SystemFileData;
 import com.android.tools.sizereduction.analyzer.model.testing.FakeFileData;
 import com.android.tools.sizereduction.analyzer.suggesters.Suggestion;
+import com.android.tools.sizereduction.analyzer.model.GradleContext;	
 import com.android.tools.sizereduction.analyzer.suggesters.binaryfiles.testing.FakeWebpConverter;
 import org.junit.Before;
 import org.junit.Test;
